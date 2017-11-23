@@ -94,7 +94,7 @@ phi = numpy.random.uniform(0,2*numpy.pi,N_fast)
 costheta = numpy.random.uniform(-1.0,1.0,N_fast)
 u = numpy.random.uniform(0,1,N_fast)
 theta = numpy.arccos( costheta )
-r = R_fast * numpy.power(u,1./3)
+r = R_fast * u
 
 data = (r * sin( theta) * cos( phi ) + boxsize/2).astype(numpy.float32)
 #print data
@@ -112,7 +112,7 @@ phi = numpy.random.uniform(0,2*numpy.pi,N_slow)
 costheta = numpy.random.uniform(-1.0,1.0,N_slow)
 u = numpy.random.uniform(0,1,N_slow)
 theta = numpy.arccos( costheta )
-r = R_slow * numpy.power(u,1./3)
+r = R_slow * u
 
 data = (r * cos( theta ) + boxsize/2).astype(numpy.float32)
 data.tofile(fp)
