@@ -24,17 +24,19 @@ G = 6.674e-11   # SI
 H0 = 100.0        # km/s / (Mpc/h)
 Msun2Gadget = 1e-10
 G = G * (m2km**2.) * (m2Mpc) / (kg2Msun * Msun2Gadget) # (Mpc/h) (km/s)^2 / (1e10Msun/h)
-print "G (internal unit)",G
+print "G (internal unit) = ",G
 
 k = 1.38064852e-23 #SI
 Mhalo_added = Mhalo*N_slow/N_fast
 R_fast = 0.5*G*Mhalo/(sigma_fast*sigma_fast)
 R_slow = 0.5*G*Mhalo_added/(sigma_slow*sigma_slow)
 mass_p = Mhalo/N_fast
-
+rho_crit_0 = 3.* H0**2 / (8.*pi*G)  # (1e10 Msun/h)/(Mpc/h)^3
+soft_r = 0.02*(mass_p/rho_crit_0)**(1./3.)
 print "R_fast = ", R_fast
 print "R_slow = ", R_slow
 print "mass_p = ", mass_p
+print "r_soft = ", soft_r
 
 header_struct = numpy.dtype([
         ('npart', numpy.int32, 6),                #number of particles of each type in this file */
