@@ -136,28 +136,29 @@ dummy.tofile(fp)
 
 data = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
 vx = data
-print data
+
 data.tofile(fp)
 data = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
-print data
+
 data.tofile(fp)
 data = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
 vy = data
-print data
+
 data.tofile(fp)
 data = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
-print data
+
 data.tofile(fp)
 data = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
 vz = data
-print data
+
 data.tofile(fp)
 data = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
-print data
+
 data.tofile(fp)
 dummy.tofile(fp)
 #end velocity
 #vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
+
 #print vv
 #begin PID
 dummy.tofile(fp)
