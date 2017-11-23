@@ -27,7 +27,7 @@ G = G * (m2km**2.) * (m2Mpc) / (kg2Msun * Msun2Gadget) # (Mpc/h) (km/s)^2 / (1e1
 print "G (internal unit)",G
 
 k = 1.38064852e-23 #SI
-
+Mhalo_added = Mhalo*N_slow/N_fast
 R_fast = 0.5*G*Mhalo/(sigma_fast*sigma_fast)
 R_slow = 0.5*G*Mhalo_added/(sigma_slow*sigma_slow)
 mass_p = Mhalo/N_fast
