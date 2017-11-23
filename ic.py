@@ -8,8 +8,8 @@ from pylab import *
 boxsize = 100.0   # Mpc/h
 N_fast = 1000000  # particles
 N_slow = 10000    # particles
-sigma_fast = 50.0 # km/s
-sigma_slow = 10.0 # km/s
+sigma_fast = 10.0 # km/s
+sigma_slow = 2.0 # km/s
 Mhalo = 1.0       # 1e10 Msun/h
 
 #################################
