@@ -159,7 +159,6 @@ dummy.tofile(fp)
 #end velocity
 #vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
 
-#print vv
 #begin PID
 dummy.tofile(fp)
 data = numpy.arange(N_slow+N_fast,dtype=numpy.int32)
@@ -169,7 +168,7 @@ dummy.tofile(fp)
 
 #begin mass
 dummy.tofile(fp)
-data = mass_p*numpy.ones(N_slow+N_fast,dtype=numpy.int32)
+data = mass_p*numpy.ones(N_slow+N_fast,dtype=numpy.float32)
 data.tofile(fp)
 dummy.tofile(fp)
 #end mass
