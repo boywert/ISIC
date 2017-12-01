@@ -10,7 +10,6 @@ N_fast = 10000  # particles
 N_slow = 100    # particles
 sigma_fast = 10.0 # km/s
 sigma_slow = 2.0 # km/s
-Mhalo = 1.0       # 1e10 Msun/h
 
 #################################
 
@@ -29,9 +28,9 @@ print "G (internal unit) = ",G
 k = 1.38064852e-23 #SI
 
 rho_crit_0 = 3.* H0**2 / (8.*pi*G)  # (1e10 Msun/h)/(Mpc/h)^3
+mass_p = rho_crit_0*OmegaM*boxsize**3/(N_fast+N_slow)
 soft_r = 0.02*(mass_p/rho_crit_0)**(1./3.)
 OmegaM = 1.0
-mass_p = rho_crit_0*OmegaM*boxsize**3/(N_fast+N_slow)
 
 print "mass_p = ", mass_p
 print "r_soft = ", soft_r
