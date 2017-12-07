@@ -73,7 +73,7 @@ dummy = numpy.fromfile(fp,dtype=numpy.int32)
 # begin position
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 
-data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1]))
+data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1])
 
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 
