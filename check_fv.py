@@ -82,9 +82,9 @@ dummy = numpy.fromfile(fp,dtype=numpy.int32)
 #begin velocity
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 
-vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1]))
-vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1]))
-vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1]))
+vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
+vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
+vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 #end velocity
 
