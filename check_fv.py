@@ -100,7 +100,7 @@ def read(filename):
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     #end PID
 
-    check = numpy.array([8060,100,200,300,400])
+    check = 8060
     index = numpy.where(ID == check)
     print ID
     print index
