@@ -61,53 +61,65 @@ header_struct = numpy.dtype([
         ('composition_vector_length', numpy.int32,1),        # specifies the length of the composition vector (0 if not present)  */
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
 
-print "Opening ", sys.argv[1].strip()
-fp = open(sys.argv[1].strip(), "rb")
+def read(filename):
+    print "Opening ", sys.argv[1].strip()
+    fp = open(sys.argv[1].strip(), "rb")
+    # begin header
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    print dummy
+    header = numpy.fromfile(fp,dtype=header_struct,count=1)
+    print header
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    # end header
 
-# begin header
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-print dummy
-header = numpy.fromfile(fp,dtype=header_struct,count=1)
-print header
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-# end header
+    # begin position
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1])
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 
-# begin position
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    #end position
 
-data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1])
+    #begin velocity
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
+    vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
+    vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    #end velocity
 
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-
-#end position
-
-#begin velocity
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-
-vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-#end velocity
-
-vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
-histogram = numpy.histogram(vv,bins=100)
-print histogram
+    vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
+    histogram = numpy.histogram(vv,bins=100)
+    print histogram
 
 
-# #begin PID
-# dummy.tofile(fp)
-# data = numpy.arange(N_slow+N_fast,dtype=numpy.int32)
-# data.tofile(fp)
-# dummy.tofile(fp)
-# #end PID
+    #begin PID
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    
+    ID = numpy.fromfile(fp,dtype=numpy.int32,count = header[0]['npart'][1])
 
-# #begin mass
-# dummy.tofile(fp)
-# data = mass_p*numpy.ones(N_slow+N_fast,dtype=numpy.float32)
-# data.tofile(fp)
-# dummy.tofile(fp)
-# #end mass
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    #end PID
 
-fp.close()
+    check = numpy.array([0,100,200,300,400])
+    index = numpy.where(ID = check)
+    print vx[check]
+    print vy[check]
+    print xz[check]
+    
+    # #begin mass
+    # dummy.tofile(fp)
+    # data = mass_p*numpy.ones(N_slow+N_fast,dtype=numpy.float32)
+    # data.tofile(fp)
+    # dummy.tofile(fp)
+    # #end mass
+    
+    fp.close()
 
+def main():
+    for i in range(20):
+        filename = sys.argv[1].strip()+"%03d"%(i)
+        read(filename)
+    return 0
+
+if __name__ == __main__:
+    main()
