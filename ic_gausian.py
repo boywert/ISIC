@@ -87,7 +87,7 @@ dummy.tofile(fp)
 
 # begin position
 dummy.tofile(fp)
-data = numpy.array((N_fast+N_slow,3),dtype=numpy.float32)
+data = numpy.empty((N_fast+N_slow,3),dtype=numpy.float32)
 data[0:N_fast,0] = boxsize*numpy.random.uniform(0,1.0,N_fast).astype(numpy.float32)
 data[N_fast:N_fast+N_slow,0] = boxsize*numpy.random.uniform(0,1.0,N_slow).astype(numpy.float32)
 data[0:N_fast,1] = boxsize*numpy.random.uniform(0,1.0,N_fast).astype(numpy.float32)
@@ -103,7 +103,7 @@ dummy.tofile(fp)
 #begin velocity
 dummy.tofile(fp)
 
-data = numpy.array((N_fast+N_slow,3),dtype=numpy.float32)
+data = numpy.empty((N_fast+N_slow,3),dtype=numpy.float32)
 data[0:N_fast,0] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
 data[N_fast:N_fast+N_slow,0] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
 data[0:N_fast,0] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
