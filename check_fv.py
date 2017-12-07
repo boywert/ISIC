@@ -102,6 +102,7 @@ def read(filename):
 
     check = 8060
     index = numpy.where(ID == check)[0]
+    print numpy.sort(ID)
     print ID
     print index
     print vx[index]
