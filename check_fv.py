@@ -101,7 +101,7 @@ def read(filename):
     #end PID
 
     check = numpy.array([0,100,200,300,400])
-    index = numpy.where(ID = check)
+    index = numpy.where(ID == check)
     print vx[check]
     print vy[check]
     print xz[check]
