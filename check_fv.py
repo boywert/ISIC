@@ -61,8 +61,8 @@ header_struct = numpy.dtype([
         ('composition_vector_length', numpy.int32,1),        # specifies the length of the composition vector (0 if not present)  */
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
 
-
-fp = open(sys.argv[1], "rb")
+print "Opening ", sys.argv[1].strip()
+fp = open(sys.argv[1].strip(), "rb")
 
 # begin header
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
