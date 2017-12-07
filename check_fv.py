@@ -1,5 +1,6 @@
 import numpy
 import sys
+import os
 from pylab import *
 
 #################################
@@ -121,6 +122,8 @@ def read(filename):
 def main():
     for i in range(20):
         filename = sys.argv[1].strip()+"%03d"%(i)
+        if not os.path.isfile(filename):
+            filename = sys.argv[1].strip()
         read(filename)
     return 0
 
