@@ -65,29 +65,29 @@ print "Opening ", sys.argv[1].strip()
 fp = open(sys.argv[1].strip(), "rb")
 
 # begin header
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 print dummy
-header = numpy.fromfile(fp,dtype=header_struct,1)
+header = numpy.fromfile(fp,dtype=header_struct,count=1)
 print header
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 # end header
 
 # begin position
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 
 data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1])
 
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 
 #end position
 
 #begin velocity
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 
 vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
 vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
 vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-dummy = numpy.fromfile(fp,dtype=numpy.int32,1)
+dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 #end velocity
 
 vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
