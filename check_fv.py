@@ -67,6 +67,7 @@ fp = open(sys.argv[1], "rb")
 # begin header
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 header = numpy.fromfile(fp,dtype=header_struct)
+print header
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
 # end header
 
