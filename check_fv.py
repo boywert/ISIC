@@ -102,7 +102,7 @@ def read(filename):
 
     check = numpy.array([0,100,200,300,400])
     index = numpy.where(ID == check)
-    print iD
+    print ID
     print index
     print vx[index]
     print vy[index]
