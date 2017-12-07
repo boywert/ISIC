@@ -62,8 +62,8 @@ header_struct = numpy.dtype([
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
 
 def read(filename):
-    print "Opening ", sys.argv[1].strip()
-    fp = open(sys.argv[1].strip(), "rb")
+    print "Opening ", filename
+    fp = open(filename, "rb")
     # begin header
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     print dummy
