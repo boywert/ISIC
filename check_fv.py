@@ -1,4 +1,5 @@
 import numpy
+import sys
 from pylab import *
 
 #################################
@@ -61,7 +62,7 @@ header_struct = numpy.dtype([
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
 
 
-fp = open("test.bin", "rb")
+fp = open(sys.argv[1], "rb")
 
 # begin header
 dummy = numpy.fromfile(fp,dtype=numpy.int32)
