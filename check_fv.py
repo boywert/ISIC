@@ -89,7 +89,7 @@ def read(filename):
 
     vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
     histogram = numpy.histogram(vv,bins=100)
-    print histogram
+    #print histogram
 
 
     #begin PID
@@ -104,7 +104,7 @@ def read(filename):
     index = numpy.where(ID == check)
     print vx[check]
     print vy[check]
-    print xz[check]
+    print vz[check]
     
     # #begin mass
     # dummy.tofile(fp)
