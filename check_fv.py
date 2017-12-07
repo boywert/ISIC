@@ -101,7 +101,7 @@ def read(filename):
     #end PID
 
     check = 8060
-    index = numpy.where(ID == check)
+    index = numpy.where(ID == check)[0]
     print ID
     print index
     print vx[index]
