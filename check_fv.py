@@ -106,9 +106,9 @@ def read(filename):
     print numpy.sort(ID)
     print ID
     print index
-    print vx[index]
-    print vy[index]
-    print vz[index]
+    print vx
+    print vy
+    print vz
     
     # #begin mass
     # dummy.tofile(fp)
