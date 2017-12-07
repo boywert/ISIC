@@ -102,10 +102,11 @@ def read(filename):
 
     check = numpy.array([0,100,200,300,400])
     index = numpy.where(ID == check)
+    print iD
     print index
-    print vx[check]
-    print vy[check]
-    print vz[check]
+    print vx[index]
+    print vy[index]
+    print vz[index]
     
     # #begin mass
     # dummy.tofile(fp)
