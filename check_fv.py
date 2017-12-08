@@ -103,12 +103,10 @@ def read(filename):
 
     check = 8060
     index = numpy.where(ID == check)[0]
-    print numpy.sort(ID)
-    print ID
     print index
-    print vx
-    print vy
-    print vz
+    print vx[index]
+    print vy[index]
+    print vz[index]
     
     # #begin mass
     # dummy.tofile(fp)
