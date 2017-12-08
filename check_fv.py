@@ -98,7 +98,12 @@ def read(filename):
     for i in range(100):
         x[i] = 0.5*(histogram[1][i]+histogram[1][i+1])
     y = numpy.array(histogram[0]).astype(numpy.float64)
-    print x,y
+    fig = figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x,y*(histogram[1][1]-histogram[1][0]))
+    ax.set_title(filename)
+    fig.savefig(filename+".pdf")   # save the figure to file
+    close(fig)    # close the figure
 
     #begin PID
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
