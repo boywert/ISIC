@@ -61,6 +61,8 @@ header_struct = numpy.dtype([
         ('flag_tracer_field', numpy.int32, 1),        # flags presence of a tracer field */
         ('composition_vector_length', numpy.int32,1),        # specifies the length of the composition vector (0 if not present)  */
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
+
+
 def KrookWuModel(minv,maxv,stepv,tau,beta):
     v = numpy.arange(minv,maxv,stepv,dtype=numpy.float32)
     K = 1.0 - numpy.exp(tau/-6.0)
@@ -92,8 +94,11 @@ def read(filename):
 
     vv = numpy.sqrt(vel[:,0]*vel[:,0]+vel[:,1]*vel[:,1]+vel[:,2]*vel[:,2])
     histogram = numpy.histogram(vv,bins=100)
-    print histogram
-
+    x = numpy.empty(100,dtype=numpy.float64)
+    for i in range(100):
+        x[i] = 0.5*(histogram[1][i]+histogram[1][i+1])
+    y = numpy.array(histogram[0]).astype(numpy.float64)
+    print x,y
 
     #begin PID
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
@@ -122,7 +127,7 @@ def main():
         if not os.path.isfile(filename):
             filename = sys.argv[1].strip()
         read(filename)
-    print KrookWuModel(0,100.0,0.01,6.0,7.0)
+    #print KrookWuModel(0,100.0,0.01,6.0,7.0)
     return 0
 
 if __name__ == "__main__":
