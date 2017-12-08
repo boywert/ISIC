@@ -101,8 +101,7 @@ def read(filename):
 
     check = 8060
     index = numpy.where(ID == check)[0]
-    print index[0]
-    print vel[index,:]
+    print ID[index],pos[index],vel[index,:]
     
     # #begin mass
     # dummy.tofile(fp)
