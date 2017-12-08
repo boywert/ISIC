@@ -75,20 +75,18 @@ def read(filename):
 
     # begin position
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-    data = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1])
+    pos = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1]).reshape((header[0]['npart'][1],3))
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
 
     #end position
 
     #begin velocity
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-    vx = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-    vy = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-    vz = numpy.fromfile(fp,dtype=numpy.float32,count = header[0]['npart'][1])
-    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
+    vel = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1]).reshape((header[0]['npart'][1],3))
+
     #end velocity
 
-    vv = numpy.sqrt(vx*vx+vy*vy+vz*vz)
+    vv = numpy.sqrt(vel[:,0]*vel[:,0]+vel[:,1]*vel[:,1]+vel[:,2]*vel[:,2])
     histogram = numpy.histogram(vv,bins=100)
     #print histogram
 
