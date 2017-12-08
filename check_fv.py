@@ -61,6 +61,11 @@ header_struct = numpy.dtype([
         ('flag_tracer_field', numpy.int32, 1),        # flags presence of a tracer field */
         ('composition_vector_length', numpy.int32,1),        # specifies the length of the composition vector (0 if not present)  */
         ('fill',numpy.string_,40)]) # fills to 256 Bytes */
+def KrookWuModel(minv,maxv,stepv,tau,beta):
+    v = numpy.arange(minv,maxv,stepv,dtype=numpy.float32)
+    K = 1.0 - numpy.exp(tau/-6.0)
+    f = numpy.exp(-0.5*v*v/(K*beta*beta)) * ((5.0*K-3.0)/K + (1.0-K)/(K*K)*v*v/(beta*beta))/(2.0*(2.0*numpy.pi*K*beta*beta)*numpy.sqrt(2.0*numpy.pi*K*beta*beta))
+    return (v,f)
 
 def read(filename):
     print "Opening ", filename
@@ -117,6 +122,7 @@ def main():
         if not os.path.isfile(filename):
             filename = sys.argv[1].strip()
         read(filename)
+    print KrookWuModel(0,100.0,0.01,6.0,7.0)
     return 0
 
 if __name__ == "__main__":
