@@ -77,13 +77,12 @@ def read(filename):
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     pos = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1]).reshape((header[0]['npart'][1],3))
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-
     #end position
 
     #begin velocity
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     vel = numpy.fromfile(fp,dtype=numpy.float32,count = 3*header[0]['npart'][1]).reshape((header[0]['npart'][1],3))
-
+    dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     #end velocity
 
     vv = numpy.sqrt(vel[:,0]*vel[:,0]+vel[:,1]*vel[:,1]+vel[:,2]*vel[:,2])
