@@ -67,9 +67,9 @@ def read(filename):
     fp = open(filename, "rb")
     # begin header
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
-    print dummy
+    #print dummy
     header = numpy.fromfile(fp,dtype=header_struct,count=1)
-    print header
+    #print header
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     # end header
 
