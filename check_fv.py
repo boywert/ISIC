@@ -1,6 +1,8 @@
 import numpy
 import sys
 import os
+import matplotlib as mpl
+mpl.use('Agg')
 from pylab import *
 
 #################################
