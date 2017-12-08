@@ -87,7 +87,7 @@ def read(filename):
 
     vv = numpy.sqrt(vel[:,0]*vel[:,0]+vel[:,1]*vel[:,1]+vel[:,2]*vel[:,2])
     histogram = numpy.histogram(vv,bins=100)
-    #print histogram
+    print histogram
 
 
     #begin PID
@@ -98,9 +98,9 @@ def read(filename):
     dummy = numpy.fromfile(fp,dtype=numpy.int32,count=1)
     #end PID
 
-    check = 8060
-    index = numpy.where(ID == check)[0]
-    print ID[index],pos[index],vel[index,:]
+    # check = 8060
+    # index = numpy.where(ID == check)[0]
+    # print ID[index],pos[index],vel[index,:]
     
     # #begin mass
     # dummy.tofile(fp)
