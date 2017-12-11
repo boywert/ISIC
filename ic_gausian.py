@@ -84,7 +84,7 @@ pointer_hdr = header[0]
 pointer_hdr['npart'][1] = N_fast+N_slow
 pointer_hdr['mass'][1] = mass_p
 pointer_hdr['time'] = 0.0
-pointer_hdr['redshift'] = 10000000.0
+pointer_hdr['redshift'] = 0.0
 pointer_hdr['npartTotal'][1] = N_fast+N_slow
 pointer_hdr['num_files'] = 1
 pointer_hdr['BoxSize'] = boxsize
@@ -122,10 +122,10 @@ dummy.tofile(fp)
 data = numpy.empty((N_fast+N_slow,3),dtype=numpy.float32)
 data[0:N_fast,0] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
 data[N_fast:N_fast+N_slow,0] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
-data[0:N_fast,0] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
-data[N_fast:N_fast+N_slow,0] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
-data[0:N_fast,0] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
-data[N_fast:N_fast+N_slow,0] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
+data[0:N_fast,1] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
+data[N_fast:N_fast+N_slow,1] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
+data[0:N_fast,2] = numpy.random.normal(0., sigma_fast, N_fast).astype(numpy.float32)
+data[N_fast:N_fast+N_slow,2] = numpy.random.normal(0., sigma_slow, N_slow).astype(numpy.float32)
 
 data.tofile(fp)
 dummy.tofile(fp)
