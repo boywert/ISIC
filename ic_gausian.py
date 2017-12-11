@@ -11,6 +11,8 @@ N_slow = 10000  # particles
 sigma_fast = 10.0 # km/s
 sigma_slow = 2.0 # km/s
 OmegaM = 1.0
+concentration = 1.0
+CrossSectionPerMass_in_cgs = 700000.0
 #################################
 
 Mpc2m = 3.08567758e22  #m
@@ -21,19 +23,33 @@ m2km = 0.001
 h_mass = 1.6737237e-27 #kg
 G = 6.674e-11   # SI
 H0 = 100.0        # km/s / (Mpc/h)
+hubble_h = 1.0
 Msun2Gadget = 1e-10
+Gadget2Msun = 1e10
+
+
+UnitMass_in_g             = 1.989e+43
+UnitTime_in_s             = 3.08568e+19
+UnitVelocity_in_cm_per_s  = 100000
+UnitDensity_in_cgs        = 6.76991e-31
+UnitEnergy_in_cgs         = 1.989e+53
+
+
 G = G * (m2km**2.) * (m2Mpc) / (kg2Msun * Msun2Gadget) # (Mpc/h) (km/s)^2 / (1e10Msun/h)
 print "G (internal unit) = ",G
 
 k = 1.38064852e-23 #SI
 
-rho_crit_0 = 3.* H0**2 / (8.*pi*G)  # (1e10 Msun/h)/(Mpc/h)^3
-mass_p = rho_crit_0*OmegaM*boxsize**3/(N_fast+N_slow)
-soft_r = 0.02*(mass_p/rho_crit_0)**(1./3.)
+rho = concentration * 3.* H0**2 / (8.*pi*G)  # (1e10 Msun/h)/(Mpc/h)^3
+rho_cgs = rho*UnitDensity_in_cgs*hubble_h*hubble_h
+mass_p = rho*OmegaM*boxsize**3/(N_fast+N_slow)
+soft_r = 0.02*(mass_p/rho)**(1./3.)
 
+tau = 4.0*numpy.pi*rho_cgs*CrossSectionPerMass_in_cgs
 
 print "mass_p = ", mass_p
 print "r_soft = ", soft_r
+print "tau = ",tau,"s"
 
 header_struct = numpy.dtype([
         ('npart', numpy.int32, 6),                #number of particles of each type in this file */
