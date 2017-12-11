@@ -50,7 +50,7 @@ tau = 1./(4.0*numpy.pi*rho_cgs*CrossSectionPerMass_in_cgs)
 print "mass_p = ", mass_p
 print "r_soft = ", soft_r
 print "tau = ",tau,"s"
-
+print "UnitTime_in_s = ",UnitTime_in_s
 header_struct = numpy.dtype([
         ('npart', numpy.int32, 6),                #number of particles of each type in this file */
         ('mass', numpy.float64, 6), # mass of particles of each type. If 0, then the masses are explicitly
