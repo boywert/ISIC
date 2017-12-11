@@ -45,7 +45,7 @@ rho_cgs = rho*UnitDensity_in_cgs*hubble_h*hubble_h
 mass_p = rho*OmegaM*boxsize**3/(N_fast+N_slow)
 soft_r = 0.02*(mass_p/rho)**(1./3.)
 
-tau = 4.0*numpy.pi*rho_cgs*CrossSectionPerMass_in_cgs
+tau = 1./(4.0*numpy.pi*rho_cgs*CrossSectionPerMass_in_cgs)
 
 print "mass_p = ", mass_p
 print "r_soft = ", soft_r
