@@ -6,8 +6,8 @@ from pylab import *
 #################################
 
 boxsize = 0.1   # Mpc/h
-N_fast = 10000  # particles
-N_slow = 10000  # particles
+N_fast = 128**3/2  # particles
+N_slow = 128**3/2  # particles
 sigma_fast = 10.0 # km/s
 sigma_slow = 2.0 # km/s
 OmegaM = 1.0
